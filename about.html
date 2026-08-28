@@ -3,24 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>关于 | Winton Blog</title>
+  <meta name="description" content="Winton 的个人简历页。">
+  <title>简历 | Winton Blog</title>
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="./index.html">Winton Blog</a>
+  <div class="bg-orb bg-orb-a"></div>
+  <div class="bg-orb bg-orb-b"></div>
+  <div class="bg-grid"></div>
+
+  <header class="site-header shell">
+    <a class="brand" href="./index.html">
+      <span class="brand-mark">✦</span>
+      <span>Winton Blog</span>
+    </a>
     <nav class="nav">
       <a href="./index.html">首页</a>
-      <a href="./about.html">关于</a>
+      <a href="./about.html">简历</a>
+      <a href="./posts/hello-world.html">文章</a>
     </nav>
+    <span class="status-pill">Resume</span>
   </header>
 
-  <main class="layout narrow">
-    <article class="page">
-      <h1>关于这个博客</h1>
-      <p>这是一个轻量静态博客模板，适合 GitHub Pages、Netlify、Vercel 这类静态托管。</p>
-      <p>后面可以继续加文章分类、标签页、搜索和 RSS。</p>
-    </article>
+  <main class="shell stack">
+    <section class="resume-hero glass">
+      <div>
+        <p class="eyebrow">个人简历</p>
+        <h1>Winton Wang</h1>
+        <p class="lead">前端界面、静态站点与内容表达方向，喜欢把复杂功能做得简单而好看。</p>
+      </div>
+      <div class="resume-hero-card">
+        <strong>定位</strong>
+        <span>二次元风格博客 / 个人主页 / 前端展示</span>
+        <strong>目标</strong>
+        <span>持续产出内容，保持轻量与审美统一</span>
+      </div>
+    </section>
+
+    <section class="resume-grid">
+      <article class="resume-card glass">
+        <p class="eyebrow">基础信息</p>
+        <h2>个人资料</h2>
+        <ul class="info-list">
+          <li><span>姓名</span><strong>Winton Wang</strong></li>
+          <li><span>方向</span><strong>前端 / 设计 / 博客</strong></li>
+          <li><span>城市</span><strong>可填写</strong></li>
+          <li><span>邮箱</span><strong>you@example.com</strong></li>
+        </ul>
+      </article>
+
+      <article class="resume-card glass">
+        <p class="eyebrow">技能栈</p>
+        <h2>我会的东西</h2>
+        <div class="skill-list">
+          <div><span>HTML / CSS</span><i style="--value: 92%"></i></div>
+          <div><span>JavaScript</span><i style="--value: 76%"></i></div>
+          <div><span>Git / GitHub Pages</span><i style="--value: 88%"></i></div>
+          <div><span>UI 视觉设计</span><i style="--value: 81%"></i></div>
+        </div>
+      </article>
+
+      <article class="resume-card glass">
+        <p class="eyebrow">经历</p>
+        <h2>简历时间线</h2>
+        <div class="focus-list">
+          <div><strong>现在</strong><span>维护博客与主页</span></div>
+          <div><strong>近期</strong><span>优化界面、音乐和内容结构</span></div>
+          <div><strong>长期</strong><span>持续更新，形成稳定个人品牌</span></div>
+        </div>
+      </article>
+
+      <article class="resume-card glass">
+        <p class="eyebrow">偏好</p>
+        <h2>个人标签</h2>
+        <ul class="chip-list">
+          <li>二次元</li>
+          <li>Lo-fi</li>
+          <li>极简</li>
+          <li>手写页面</li>
+          <li>静态部署</li>
+        </ul>
+      </article>
+    </section>
   </main>
 </body>
 </html>
