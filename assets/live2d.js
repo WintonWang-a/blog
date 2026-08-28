@@ -12,12 +12,16 @@
         <button class="live2d-reset" type="button" data-live2d-reset>回到角落</button>
       </div>
       <div class="live2d-stage">
+        <div class="live2d-fallback" aria-hidden="true">
+          <div class="live2d-fallback-art"></div>
+        </div>
         <div class="live2d-loading">昔涟加载中...</div>
       </div>
     `;
     document.body.appendChild(widget);
 
     const stage = widget.querySelector('.live2d-stage');
+    const fallback = widget.querySelector('.live2d-fallback');
     const loading = widget.querySelector('.live2d-loading');
     const handle = widget.querySelector('.live2d-handle');
     const resetButton = widget.querySelector('[data-live2d-reset]');
@@ -34,6 +38,7 @@
     const app = new PIXI.Application({
       width: stage.clientWidth,
       height: stage.clientHeight,
+      backgroundColor: 0xffffff,
       backgroundAlpha: 0,
       antialias: true,
       autoDensity: true,
@@ -53,6 +58,7 @@
     }
 
     loading.remove();
+    fallback.remove();
     app.stage.addChild(model);
 
     const fitModel = () => {
