@@ -9,6 +9,7 @@
 - `posts/` 文章页
 - `assets/style.css` 全站样式
 - `assets/app.js` 迷你音乐播放器
+- `assets/live2d/` 可拖动 Live2D 桌宠资源
 
 ## 写文章
 
