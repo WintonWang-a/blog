@@ -28,7 +28,8 @@
 ## API 地址
 
 - 本地默认：`http://127.0.0.1:8787/api`
-- 需要换成线上后端时，改 `assets/site-config.js`
+- 正常打开网页时默认走同域 `./api`
+- 需要换成别的后端时，改 `assets/site-config.js`
 
 ## 评论
 
