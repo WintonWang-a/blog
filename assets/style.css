@@ -484,6 +484,9 @@ body.music-playing .equalizer span:nth-child(5) { animation-delay: 0.18s; }
   display: grid;
   gap: 16px;
   margin-top: 18px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .comments-head {
@@ -830,7 +833,7 @@ time {
 .page {
   max-width: 760px;
   margin: 0 auto;
-  padding: 28px 0 72px;
+  padding: 28px 24px 40px;
 }
 
 .resume-hero {
@@ -988,6 +991,8 @@ time {
   .resume-hero,
   .music-panel,
   .resume-card,
+  .page,
+  .comments-panel,
   .timeline,
   .post-card {
     padding: 20px;
