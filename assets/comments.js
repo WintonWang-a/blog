@@ -112,7 +112,7 @@
       container.innerHTML = `
         <div class="empty-state">
           <strong>评论服务暂未连接</strong>
-          <p>请先启动后台服务。</p>
+          <p>请先启动本地接口服务。</p>
         </div>
       `;
     }

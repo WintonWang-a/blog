@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const fs = require('fs/promises');
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -11,7 +12,7 @@ const POSTS_FILE = path.join(DATA_DIR, 'posts.json');
 const COMMENTS_FILE = path.join(DATA_DIR, 'comments.json');
 
 const PORT = Number(process.env.PORT || 8787);
-const ADMIN_PASSWORD = process.env.BLOG_ADMIN_PASSWORD || 'admin123456';
+const ADMIN_PASSWORD = process.env.BLOG_ADMIN_PASSWORD;
 const JWT_SECRET = process.env.BLOG_JWT_SECRET || 'winton-blog-secret';
 
 const app = express();
@@ -141,6 +142,9 @@ app.get('/api/health', async (req, res) => {
 });
 
 app.post('/api/auth/login', async (req, res) => {
+  if (!ADMIN_PASSWORD) {
+    return res.status(500).json({ message: '请先在本地 .env 里配置 BLOG_ADMIN_PASSWORD' });
+  }
   const password = String(req.body?.password || '');
   if (password !== ADMIN_PASSWORD) {
     return res.status(401).json({ message: '密码不对' });
@@ -308,7 +312,7 @@ app.delete('/api/admin/comments/:id', requireAdmin, async (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(ROOT, 'admin.html'));
+  res.sendFile(path.join(ROOT, '.local', 'admin.html'), { dotfiles: 'allow' });
 });
 
 app.get('/dynamic', (req, res) => {

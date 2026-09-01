@@ -38,7 +38,7 @@
   const renderEmpty = (message) => `
     <div class="empty-state">
       <strong>${message}</strong>
-      <p>等后台连上后，这里会自动显示最新动态。</p>
+      <p>等本地接口连上后，这里会自动显示最新动态。</p>
     </div>
   `;
 
@@ -55,7 +55,7 @@
       container.innerHTML = posts.map(renderCard).join('');
     } catch (error) {
       console.error(error);
-      container.innerHTML = renderEmpty('后台暂未连接');
+      container.innerHTML = renderEmpty('本地接口暂未连接');
     }
   };
 
