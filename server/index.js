@@ -45,15 +45,6 @@ const seedPosts = [
     updatedAt: '2026-09-01T00:00:00.000Z'
   },
   {
-    slug: 'minimalism',
-    title: '为什么我选择极简博客',
-    category: '理念',
-    summary: '少一点结构，多一点内容，部署和维护都会轻松很多。',
-    content: '写作最重要的是持续。越少的依赖，越少的维护成本，越容易坚持更新。\n\n如果以后内容多了，再按需增加功能就好。',
-    publishedAt: '2026-08-28',
-    updatedAt: '2026-09-01T00:00:00.000Z'
-  },
-  {
     slug: 'performance',
     title: '博客性能优化清单',
     category: '实践',
