@@ -6,11 +6,14 @@
   <meta name="description" content="二次元风格的静态博客主页，集个人简历与音乐播放于一体。">
   <title>Winton | 博客</title>
   <link rel="stylesheet" href="./assets/style.css">
+  <script defer src="./assets/site-config.js"></script>
+  <script defer src="./assets/blog-api.js"></script>
   <script defer src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.10/dist/browser/pixi.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.4.0/dist/cubism4.min.js"></script>
   <script defer src="./assets/app.js"></script>
   <script defer src="./assets/live2d.js"></script>
+  <script defer src="./assets/feed.js"></script>
 </head>
 <body>
   <div class="bg-orb bg-orb-a"></div>
@@ -26,6 +29,8 @@
       <a href="./index.html">首页</a>
       <a href="./about.html">简历</a>
       <a href="./posts/hello-world.html">文章</a>
+      <a href="./dynamic.html">动态</a>
+      <a href="./admin.html">后台</a>
     </nav>
     <span class="status-pill">Online</span>
   </header>
@@ -100,7 +105,17 @@
         </a>
       </div>
     </section>
+
+    <section class="dynamic-section glass">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">动态博客</p>
+          <h2>最新动态</h2>
+        </div>
+        <a class="text-link" href="./dynamic.html">查看全部</a>
+      </div>
+      <div class="dynamic-feed" data-post-feed data-limit="3"></div>
+    </section>
   </main>
 </body>
 </html>
-

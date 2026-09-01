@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Winton 的动态博客，支持后台发布与评论。">
+  <title>动态 | Winton Blog</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <script defer src="./assets/site-config.js"></script>
+  <script defer src="./assets/blog-api.js"></script>
+  <script defer src="./assets/feed.js"></script>
+</head>
+<body>
+  <div class="bg-orb bg-orb-a"></div>
+  <div class="bg-orb bg-orb-b"></div>
+  <div class="bg-grid"></div>
+
+  <header class="site-header shell">
+    <a class="brand" href="./index.html">
+      <span class="brand-mark">✦</span>
+      <span>Winton Blog</span>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">首页</a>
+      <a href="./about.html">简历</a>
+      <a href="./posts/hello-world.html">文章</a>
+      <a href="./dynamic.html">动态</a>
+      <a href="./admin.html">后台</a>
+    </nav>
+    <span class="status-pill">Dynamic</span>
+  </header>
+
+  <main class="shell stack">
+    <section class="hero glass">
+      <div class="hero-copy">
+        <p class="eyebrow">动态博客</p>
+        <h1>后台发布的<br>实时动态页。</h1>
+        <p class="lead">这里会自动显示你在后台发的内容，游客也可以直接评论。</p>
+      </div>
+      <aside class="profile-card">
+        <div class="profile-name">动态中心</div>
+        <p class="profile-role">发布 / 编辑 / 评论 / 删除</p>
+        <div class="stats">
+          <div><dt>评论</dt><dd>公开显示</dd></div>
+          <div><dt>管理</dt><dd>后台控制</dd></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="dynamic-section glass">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">动态列表</p>
+          <h2>最新发布</h2>
+        </div>
+      </div>
+      <div class="dynamic-feed feed-grid" data-post-feed></div>
+    </section>
+  </main>
+</body>
+</html>

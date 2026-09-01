@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>为什么我选择极简博客 | Winton Blog</title>
   <link rel="stylesheet" href="../assets/style.css">
+  <script defer src="../assets/site-config.js"></script>
+  <script defer src="../assets/blog-api.js"></script>
+  <script defer src="../assets/comments.js"></script>
 </head>
 <body>
   <div class="bg-orb bg-orb-a"></div>
@@ -20,18 +23,21 @@
       <a href="../index.html">首页</a>
       <a href="../about.html">简历</a>
       <a href="../posts/hello-world.html">文章</a>
+      <a href="../dynamic.html">动态</a>
+      <a href="../admin.html">后台</a>
     </nav>
     <span class="status-pill">Article</span>
   </header>
 
   <main class="shell narrow">
-    <article class="page">
+    <article class="page glass">
       <p class="eyebrow">理念</p>
       <h1>为什么我选择极简博客</h1>
       <p class="meta">2026-08-28</p>
       <p>写作最重要的是持续。越少的依赖，越少的维护成本，越容易坚持更新。</p>
       <p>如果以后内容多了，再按需增加功能就好。</p>
     </article>
+    <section class="comments-panel glass" data-comments data-post-slug="minimalism"></section>
   </main>
 </body>
 </html>

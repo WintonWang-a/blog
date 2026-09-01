@@ -1,23 +1,36 @@
 # blog
 
-二次元风格的轻量静态博客，适合直接部署到 GitHub Pages。
+二次元风格博客，现已加入动态后台和公开评论。
 
 ## 结构
 
 - `index.html` 首页
 - `about.html` 简历页
-- `posts/` 文章页
-- `assets/style.css` 全站样式
-- `assets/app.js` 迷你音乐播放器
-- `assets/live2d/` 可拖动 Live2D 桌宠资源
+- `posts/` 静态文章页
+- `dynamic.html` 动态列表
+- `dynamic-post.html` 动态详情页
+- `admin.html` 后台管理页
+- `assets/` 全站样式与脚本
+- `server/index.js` 本地 API 服务
+- `data/` 动态与评论数据
 
-## 写文章
+## 本地运行
 
-1. 复制 `posts/hello-world.html`
-2. 改标题、日期和正文
-3. 在 `index.html` 里加一张卡片链接到新文章
-4. 把 `about.html` 里的占位信息替换成你的真实简历
+1. 安装依赖：`npm install`
+2. 启动服务：`npm start`
+3. 打开：`http://127.0.0.1:8787`
 
-## 部署
+## 后台登录
 
-直接把仓库推到 GitHub，开启 Pages 即可。
+- 默认密码来自环境变量 `BLOG_ADMIN_PASSWORD`
+- 没设置时，默认值是 `admin123456`
+
+## API 地址
+
+- 本地默认：`http://127.0.0.1:8787/api`
+- 需要换成线上后端时，改 `assets/site-config.js`
+
+## 评论
+
+- 游客评论会直接公开显示
+- 不做人工审核
