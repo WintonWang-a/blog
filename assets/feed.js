@@ -22,11 +22,12 @@
 
   const renderCard = (post) => {
     const link = `./dynamic-post.html?slug=${encodeURIComponent(post.slug)}`;
+    const excerpt = post.summary || String(post.content || '').split(/\n+/).find(Boolean) || '';
     return `
       <a class="feed-card glass" href="${link}">
         <span class="tag">${escapeHtml(post.category || '动态')}</span>
         <h3>${escapeHtml(post.title)}</h3>
-        <p>${escapeHtml(post.summary || '')}</p>
+        <p>${escapeHtml(excerpt)}</p>
         <div class="feed-meta">
           <time>${formatDate(post.publishedAt)}</time>
           <span>${post.commentCount || 0} 条评论</span>
@@ -38,7 +39,7 @@
   const renderEmpty = (message) => `
     <div class="empty-state">
       <strong>${message}</strong>
-      <p>等本地接口连上后，这里会自动显示最新动态。</p>
+      <p>这里会从本地后台或仓库里的数据文件自动读取。</p>
     </div>
   `;
 
@@ -46,8 +47,7 @@
     const limit = container.dataset.limit || '';
     container.innerHTML = '<div class="empty-state"><strong>正在加载动态...</strong></div>';
     try {
-      const query = limit ? `?limit=${encodeURIComponent(limit)}` : '';
-      const posts = await window.BLOG_API.request(`posts${query}`);
+      const posts = await window.BLOG_DATA.loadPosts(Number(limit) || 0);
       if (!posts.length) {
         container.innerHTML = renderEmpty('还没有动态');
         return;
@@ -55,7 +55,7 @@
       container.innerHTML = posts.map(renderCard).join('');
     } catch (error) {
       console.error(error);
-      container.innerHTML = renderEmpty('本地接口暂未连接');
+      container.innerHTML = renderEmpty('暂时无法读取动态');
     }
   };
 

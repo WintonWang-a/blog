@@ -70,7 +70,6 @@
     slugInput.value = post.slug || '';
     slugInput.disabled = true;
     postForm.querySelector('[name="category"]').value = post.category || '动态';
-    postForm.querySelector('[name="summary"]').value = post.summary || '';
     postForm.querySelector('[name="content"]').value = post.content || '';
     postForm.querySelector('[name="publishedAt"]').value = (post.publishedAt || new Date().toISOString()).slice(0, 10);
     postForm.querySelector('button[type="submit"]').textContent = '保存修改';
@@ -191,7 +190,6 @@
       title: String(formData.get('title') || '').trim(),
       slug: String(formData.get('slug') || '').trim(),
       category: String(formData.get('category') || '').trim(),
-      summary: String(formData.get('summary') || '').trim(),
       content: String(formData.get('content') || '').trim(),
       publishedAt: String(formData.get('publishedAt') || '').trim()
     };

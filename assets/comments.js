@@ -57,7 +57,7 @@
         <input class="field-input" name="author" placeholder="你的名字" maxlength="30" value="匿名">
         <textarea class="field-textarea" name="content" placeholder="写下你的想法..." required maxlength="500"></textarea>
         <button class="btn primary" type="submit">发送评论</button>
-        <p class="comment-tip">评论会立即公开显示。</p>
+        <p class="comment-tip">评论会在保存后公开显示。</p>
       </form>
       <div class="comment-list" data-comment-list>
         ${comments.length ? comments.map(renderComment).join('') : renderEmpty()}
@@ -80,10 +80,7 @@
       button.textContent = '发送中...';
 
       try {
-        const comment = await window.BLOG_API.request('comments', {
-          method: 'POST',
-          body: JSON.stringify({ postSlug: slug, author, content })
-        });
+        const comment = await window.BLOG_DATA.submitComment({ postSlug: slug, author, content });
         const empty = list.querySelector('.empty-state');
         if (empty) {
           list.innerHTML = '';
@@ -93,7 +90,7 @@
         form.reset();
         form.querySelector('[name="author"]').value = author;
       } catch (error) {
-        alert(error.message);
+        alert(error.message || '当前没有可写入的后台服务');
       } finally {
         button.disabled = false;
         button.textContent = '发送评论';
@@ -105,14 +102,14 @@
     const slug = getSlug(container);
     container.innerHTML = '<div class="empty-state"><strong>评论加载中...</strong></div>';
     try {
-      const comments = await window.BLOG_API.request(`comments?postSlug=${encodeURIComponent(slug)}`);
+      const comments = await window.BLOG_DATA.loadComments(slug);
       render(container, slug, comments);
     } catch (error) {
       console.error(error);
       container.innerHTML = `
         <div class="empty-state">
-          <strong>评论服务暂未连接</strong>
-          <p>请先启动本地接口服务。</p>
+          <strong>评论暂不可用</strong>
+          <p>请先启动本地后台，或等待仓库数据同步完成。</p>
         </div>
       `;
     }

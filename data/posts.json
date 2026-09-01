@@ -1,28 +1,19 @@
 [
   {
+    "slug": "blog",
+    "title": "Blog",
+    "category": "动态",
+    "summary": "",
+    "content": "欢迎留言",
+    "publishedAt": "2026-09-01",
+    "updatedAt": "2026-09-01T13:54:57.462Z"
+  },
+  {
     "slug": "hello-world",
     "title": "Hello World",
     "category": "入门",
     "summary": "第一篇文章，说明这个博客要怎么写、怎么发、怎么维护。",
     "content": "这是一套最轻的博客起点。没有框架负担，没有数据库，直接改 HTML 也能发文。\n\n下一步可以把文章拆成独立页面，再慢慢补标签、归档和搜索。",
-    "publishedAt": "2026-08-28",
-    "updatedAt": "2026-09-01T00:00:00.000Z"
-  },
-  {
-    "slug": "minimalism",
-    "title": "为什么我选择极简博客",
-    "category": "理念",
-    "summary": "少一点结构，多一点内容，部署和维护都会轻松很多。",
-    "content": "写作最重要的是持续。越少的依赖，越少的维护成本，越容易坚持更新。\n\n如果以后内容多了，再按需增加功能就好。",
-    "publishedAt": "2026-08-28",
-    "updatedAt": "2026-09-01T00:00:00.000Z"
-  },
-  {
-    "slug": "performance",
-    "title": "博客性能优化清单",
-    "category": "实践",
-    "summary": "压缩资源、少依赖、少脚本，让页面打开更快。",
-    "content": "只保留必要样式和少量脚本，页面会更快，部署也更稳。\n\n图片尽量压缩，文章页保持轻量，就是最实用的优化。",
     "publishedAt": "2026-08-28",
     "updatedAt": "2026-09-01T00:00:00.000Z"
   }

@@ -32,7 +32,7 @@
     article.innerHTML = '<p class="meta">正在加载动态...</p>';
 
     try {
-      const post = await window.BLOG_API.request(`posts/${encodeURIComponent(slug)}`);
+      const post = await window.BLOG_DATA.loadPost(slug);
       article.innerHTML = `
         <p class="eyebrow">${escapeHtml(post.category || '动态')}</p>
         <h1>${escapeHtml(post.title)}</h1>

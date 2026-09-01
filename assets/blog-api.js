@@ -10,12 +10,14 @@
       return `${this.base()}/${path}`;
     },
     async request(pathname, options = {}) {
+      const headers = new Headers(options.headers || {});
+      if (options.body && !headers.has('Content-Type')) {
+        headers.set('Content-Type', 'application/json');
+      }
+
       const response = await fetch(this.url(pathname), {
-        headers: {
-          'Content-Type': 'application/json',
-          ...(options.headers || {})
-        },
-        ...options
+        ...options,
+        headers
       });
 
       let body = null;

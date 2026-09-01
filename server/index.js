@@ -2,9 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const { execFile } = require('child_process');
+const { promisify } = require('util');
 const fs = require('fs/promises');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+
+const execFileAsync = promisify(execFile);
 
 const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -16,6 +20,12 @@ const ADMIN_PASSWORD = process.env.BLOG_ADMIN_PASSWORD;
 const JWT_SECRET = process.env.BLOG_JWT_SECRET || 'winton-blog-secret';
 
 const app = express();
+const repoSyncState = {
+  timer: null,
+  running: false,
+  pending: false,
+  reason: '更新'
+};
 
 app.use(cors({ origin: true }));
 app.use(express.json({ limit: '1mb' }));
@@ -74,6 +84,71 @@ async function readJson(filePath, fallback) {
 async function writeJson(filePath, value) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, JSON.stringify(value, null, 2), 'utf8');
+}
+
+async function runGit(args) {
+  return execFileAsync('git', args, {
+    cwd: ROOT,
+    env: {
+      ...process.env,
+      GIT_TERMINAL_PROMPT: '0'
+    },
+    windowsHide: true
+  });
+}
+
+async function hasStagedChanges() {
+  try {
+    await runGit(['diff', '--cached', '--quiet', '--', 'data/posts.json', 'data/comments.json']);
+    return false;
+  } catch (error) {
+    if (Number(error.code) === 1) {
+      return true;
+    }
+    throw error;
+  }
+}
+
+async function syncRepoNow() {
+  if (repoSyncState.running) {
+    repoSyncState.pending = true;
+    return;
+  }
+
+  repoSyncState.running = true;
+  try {
+    do {
+      repoSyncState.pending = false;
+      await runGit(['add', 'data/posts.json', 'data/comments.json']);
+      const staged = await hasStagedChanges();
+      if (!staged) {
+        return;
+      }
+
+      const stamp = new Date().toISOString().replace('T', ' ').replace(/\.\d{3}Z$/, 'Z');
+      const message = `chore(blog): ${repoSyncState.reason} ${stamp}`;
+      await runGit(['commit', '-m', message, '--', 'data/posts.json', 'data/comments.json']);
+      await runGit(['push', 'origin', 'main']);
+      console.log('[repo-sync] pushed changes to origin/main');
+    } while (repoSyncState.pending);
+  } catch (error) {
+    console.error('[repo-sync] failed:', error.message);
+  } finally {
+    repoSyncState.running = false;
+  }
+}
+
+function scheduleRepoSync(reason) {
+  repoSyncState.reason = reason || repoSyncState.reason;
+  repoSyncState.pending = true;
+  if (repoSyncState.timer) {
+    return;
+  }
+
+  repoSyncState.timer = setTimeout(() => {
+    repoSyncState.timer = null;
+    syncRepoNow();
+  }, 500);
 }
 
 function slugify(value) {
@@ -210,6 +285,7 @@ app.post('/api/posts', requireAdmin, async (req, res) => {
 
   state.posts.unshift(post);
   await savePosts(state.posts);
+  scheduleRepoSync('发布动态');
   res.status(201).set(jsonHeaders).json(post);
 });
 
@@ -229,7 +305,9 @@ app.put('/api/posts/:slug', requireAdmin, async (req, res) => {
     ...state.posts[index],
     title,
     category: String(req.body?.category || state.posts[index].category || '动态').trim(),
-    summary: String(req.body?.summary || '').trim(),
+    summary: req.body?.summary !== undefined
+      ? String(req.body.summary || '').trim()
+      : state.posts[index].summary,
     content: String(req.body?.content || '').trim(),
     publishedAt: String(req.body?.publishedAt || state.posts[index].publishedAt),
     updatedAt: new Date().toISOString()
@@ -237,6 +315,7 @@ app.put('/api/posts/:slug', requireAdmin, async (req, res) => {
 
   state.posts[index] = updated;
   await savePosts(state.posts);
+  scheduleRepoSync('更新动态');
   res.set(jsonHeaders).json(updated);
 });
 
@@ -251,6 +330,7 @@ app.delete('/api/posts/:slug', requireAdmin, async (req, res) => {
 
   await savePosts(state.posts);
   await saveComments(state.comments);
+  scheduleRepoSync('删除动态');
   res.json({ ok: true });
 });
 
@@ -287,6 +367,7 @@ app.post('/api/comments', async (req, res) => {
 
   state.comments.unshift(comment);
   await saveComments(state.comments);
+  scheduleRepoSync('发布评论');
   res.status(201).set(jsonHeaders).json(comment);
 });
 
@@ -308,6 +389,7 @@ app.delete('/api/admin/comments/:id', requireAdmin, async (req, res) => {
   }
 
   await saveComments(state.comments);
+  scheduleRepoSync('删除评论');
   res.json({ ok: true });
 });
 
