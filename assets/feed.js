@@ -45,14 +45,19 @@
 
   const load = async (container) => {
     const limit = container.dataset.limit || '';
+    const category = String(container.dataset.category || '').trim();
     container.innerHTML = '<div class="empty-state"><strong>正在加载动态...</strong></div>';
     try {
-      const posts = await window.BLOG_DATA.loadPosts(Number(limit) || 0);
-      if (!posts.length) {
+      const posts = await window.BLOG_DATA.loadPosts(0);
+      const filtered = category
+        ? posts.filter((post) => String(post.category || '').trim() === category)
+        : posts;
+      const visible = (Number(limit) || 0) > 0 ? filtered.slice(0, Number(limit)) : filtered;
+      if (!visible.length) {
         container.innerHTML = renderEmpty('还没有动态');
         return;
       }
-      container.innerHTML = posts.map(renderCard).join('');
+      container.innerHTML = visible.map(renderCard).join('');
     } catch (error) {
       console.error(error);
       container.innerHTML = renderEmpty('暂时无法读取动态');

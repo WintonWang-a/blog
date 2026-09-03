@@ -3,15 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Winton 的说说详情页。">
-  <title>说说详情 | Winton Blog</title>
+  <meta name="description" content="Winton 的项目页，采用与首页一致的玻璃卡片和 Banner 风格。">
+  <title>项目 | Winton Blog</title>
   <link rel="stylesheet" href="./assets/style.css?v=20260904f">
-  <script defer src="./assets/site-config.js"></script>
-  <script defer src="./assets/blog-api.js"></script>
-  <script defer src="./assets/data-store.js"></script>
   <script defer src="./assets/layout.js"></script>
-  <script defer src="./assets/comments.js"></script>
-  <script defer src="./assets/dynamic-post.js"></script>
 </head>
 <body>
   <div class="bg-orb bg-orb-a"></div>
@@ -34,13 +29,33 @@
       <a class="nav-link" data-nav-link href="./articles.html">文章</a>
       <a class="nav-link" data-nav-link href="./about.html">关于</a>
     </nav>
-    <span class="status-pill">Detail</span>
+    <span class="status-pill">Projects</span>
   </header>
 
-  <main class="shell narrow article-shell">
-    <a class="back-link" data-back-link href="./talks.html">← 返回说说</a>
-    <article class="page glass" data-dynamic-post></article>
-    <section class="comments-panel glass" data-comments></section>
+  <main class="shell page-shell stack">
+    <section class="page-hero">
+      <div class="content-card">
+        <div class="hero-blank"></div>
+      </div>
+      <div class="page-hero-card">
+        <div class="hero-panel-stack">
+          <div class="hero-panel-block"></div>
+          <div class="hero-panel-block"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-card">
+      <div class="project-grid">
+        <article class="project-card"></article>
+        <article class="project-card"></article>
+        <article class="project-card"></article>
+      </div>
+    </section>
+
+    <section class="content-card">
+      <div class="timeline-list"></div>
+    </section>
   </main>
 </body>
 </html>

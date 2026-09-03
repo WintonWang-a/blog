@@ -1,4 +1,45 @@
 (() => {
+  const typewriter = document.querySelector('[data-typewriter]');
+  if (typewriter) {
+    const texts = String(typewriter.dataset.texts || '')
+      .split('|')
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    if (texts.length) {
+      let textIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const tickTyping = () => {
+        const current = texts[textIndex];
+        if (!current) return;
+
+        if (deleting) {
+          charIndex -= 1;
+        } else {
+          charIndex += 1;
+        }
+
+        typewriter.textContent = current.slice(0, charIndex);
+
+        let delay = deleting ? 45 : 95;
+        if (!deleting && charIndex === current.length) {
+          delay = 1800;
+          deleting = true;
+        } else if (deleting && charIndex === 0) {
+          deleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+          delay = 320;
+        }
+
+        window.setTimeout(tickTyping, delay);
+      };
+
+      tickTyping();
+    }
+  }
+
   const buttons = document.querySelectorAll('[data-music-toggle]');
   const state = document.querySelector('[data-music-state]');
 

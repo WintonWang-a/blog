@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Winton 的个人简历页。">
-  <title>简历 | Winton Blog</title>
-  <link rel="stylesheet" href="./assets/style.css?v=20260901b">
+  <meta name="description" content="关于 Winton 的页面，延续新的玻璃材质与双栏表达。">
+  <title>关于 | Winton Blog</title>
+  <link rel="stylesheet" href="./assets/style.css?v=20260904f">
+  <script defer src="./assets/layout.js"></script>
 </head>
 <body>
   <div class="bg-orb bg-orb-a"></div>
@@ -14,78 +15,98 @@
 
   <header class="site-header shell">
     <a class="brand" href="./index.html">
-      <span class="brand-mark">✦</span>
-      <span>Winton Blog</span>
+      <span class="brand-mark">W</span>
+      <span class="brand-copy">
+        <strong>Winton Blog</strong>
+        <span>Notes, Projects, Moments</span>
+      </span>
     </a>
     <nav class="nav">
-      <a href="./index.html">首页</a>
-      <a href="./about.html">简历</a>
-      <a href="./posts/hello-world.html">文章</a>
-      <a href="./dynamic.html">动态</a>
+      <a class="nav-link" data-nav-link href="./index.html">首页</a>
+      <a class="nav-link" data-nav-link href="./projects.html">项目</a>
+      <a class="nav-link" data-nav-link href="./photo-wall.html">照片墙</a>
+      <a class="nav-link" data-nav-link href="./talks.html">说说</a>
+      <a class="nav-link" data-nav-link href="./articles.html">文章</a>
+      <a class="nav-link" data-nav-link href="./about.html">关于</a>
     </nav>
-    <span class="status-pill">Resume</span>
+    <span class="status-pill">About</span>
   </header>
 
-  <main class="shell stack">
-    <section class="resume-hero glass">
-      <div>
-        <p class="eyebrow">个人简历</p>
-        <h1>Winton Wang</h1>
-        <p class="lead">前端界面、静态站点与内容表达方向，喜欢把复杂功能做得简单而好看。</p>
+  <main class="shell page-shell stack">
+    <section class="resume-hero">
+      <div class="content-card">
+        <p class="eyebrow">About Me</p>
+        <h1>你好，我是 Winton。</h1>
+        <p class="lead">平时主要关注 AI Agent、算法和嵌入式，也喜欢把自己写的内容和页面整理得更舒服一点。</p>
       </div>
-      <div class="resume-hero-card">
-        <strong>定位</strong>
-        <span>二次元风格博客 / 个人主页 / 前端展示</span>
-        <strong>目标</strong>
-        <span>持续产出内容，保持轻量与审美统一</span>
+      <div class="page-hero-card">
+        <strong>最近在看</strong>
+        <span>AI Agent、算法实践、嵌入式软件。</span>
+        <strong>做站偏好</strong>
+        <span>页面轻一点，信息清楚一点。</span>
       </div>
     </section>
 
     <section class="resume-grid">
-      <article class="resume-card glass">
-        <p class="eyebrow">基础信息</p>
+      <article class="resume-card">
+        <p class="eyebrow">Profile</p>
         <h2>个人资料</h2>
         <ul class="info-list">
           <li><span>姓名</span><strong>Winton Wang</strong></li>
-          <li><span>方向</span><strong>ai agent / 算法 / 嵌入式</strong></li>
+          <li><span>方向</span><strong>AI Agent / 算法 / 嵌入式</strong></li>
           <li><span>城市</span><strong>无锡</strong></li>
-          <li><span>邮箱</span><strong>winton-wang@qq.com</strong></li>
+          <li><span>关键词</span><strong>轻量系统、内容表达、界面整理</strong></li>
         </ul>
       </article>
 
-      <article class="resume-card glass">
-        <p class="eyebrow">技能栈</p>
-        <h2>我会的东西</h2>
+      <article class="resume-card">
+        <p class="eyebrow">Skill Stack</p>
+        <h2>能力侧重</h2>
         <div class="skill-list">
-          <div><span>ai agent</span><i style="--value: 92%"></i></div>
-          <div><span>python</span><i style="--value: 76%"></i></div>
+          <div><span>AI Agent</span><i style="--value: 92%"></i></div>
+          <div><span>Python</span><i style="--value: 78%"></i></div>
           <div><span>嵌入式软件编程</span><i style="--value: 88%"></i></div>
-          <div><span>算法设计</span><i style="--value: 81%"></i></div>
+          <div><span>博客与内容结构设计</span><i style="--value: 82%"></i></div>
         </div>
       </article>
 
-      <article class="resume-card glass">
-        <p class="eyebrow">经历</p>
-        <h2>简历时间线</h2>
+      <article class="resume-card">
+        <p class="eyebrow">Focus</p>
+        <h2>最近在做</h2>
         <div class="focus-list">
-          <div><strong>现在</strong><span>维护博客与主页</span></div>
-          <div><strong>近期</strong><span>优化界面、音乐和内容结构</span></div>
-          <div><strong>长期</strong><span>持续更新</span></div>
+          <div>
+            <strong>整理博客</strong>
+            <span>把首页、文章和关于页慢慢调顺。</span>
+          </div>
+          <div>
+            <strong>保留轻量更新</strong>
+            <span>继续用现在的方式发说说和写文章。</span>
+          </div>
+          <div>
+            <strong>统一页面风格</strong>
+            <span>让几个主要页面看起来更像同一个站。</span>
+          </div>
         </div>
       </article>
 
-      <article class="resume-card glass">
-        <p class="eyebrow">偏好</p>
+      <article class="resume-card">
+        <p class="eyebrow">Preference</p>
         <h2>个人标签</h2>
         <ul class="chip-list">
-          <li>二次元</li>
+          <li>静态站</li>
+          <li>清爽材质</li>
           <li>Lo-fi</li>
-          <li>极简</li>
-          <li>手写页面</li>
-          <li>静态部署</li>
+          <li>轻 CMS</li>
+          <li>有秩序的页面</li>
+          <li>小而美工具</li>
         </ul>
       </article>
     </section>
+
+    <footer class="site-footer">
+      <span>关于页</span>
+      <span>更新于 2026-09-04</span>
+    </footer>
   </main>
 </body>
 </html>

@@ -13,7 +13,7 @@
   const backLink = document.querySelector('[data-back-link]');
 
   if (backLink) {
-    backLink.href = './dynamic.html';
+    backLink.href = './talks.html';
   }
 
   const renderParagraphs = (content) => {

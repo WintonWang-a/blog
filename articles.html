@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Winton 的文章页，承接首页中的文章模块。">
+  <title>文章 | Winton Blog</title>
+  <link rel="stylesheet" href="./assets/style.css?v=20260904f">
+  <script defer src="./assets/layout.js"></script>
+</head>
+<body>
+  <div class="bg-orb bg-orb-a"></div>
+  <div class="bg-orb bg-orb-b"></div>
+  <div class="bg-grid"></div>
+
+  <header class="site-header shell">
+    <a class="brand" href="./index.html">
+      <span class="brand-mark">W</span>
+      <span class="brand-copy">
+        <strong>Winton Blog</strong>
+        <span>Notes, Projects, Moments</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a class="nav-link" data-nav-link href="./index.html">首页</a>
+      <a class="nav-link" data-nav-link href="./projects.html">项目</a>
+      <a class="nav-link" data-nav-link href="./photo-wall.html">照片墙</a>
+      <a class="nav-link" data-nav-link href="./talks.html">说说</a>
+      <a class="nav-link" data-nav-link href="./articles.html">文章</a>
+      <a class="nav-link" data-nav-link href="./about.html">关于</a>
+    </nav>
+    <span class="status-pill">Articles</span>
+  </header>
+
+  <main class="shell page-shell stack">
+    <section class="page-hero">
+      <div class="content-card">
+        <p class="eyebrow">Articles</p>
+        <h1>这里放稍微长一点的内容。</h1>
+        <p class="lead">现在先整理已经有的两篇文章，后面再慢慢补更多内容。</p>
+      </div>
+      <div class="page-hero-card">
+        <strong>当前文章数</strong>
+        <span>2 篇。</span>
+        <strong>内容方向</strong>
+        <span>起步记录和一些实践笔记。</span>
+      </div>
+    </section>
+
+    <section class="content-card">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Archive</p>
+          <h2>文章列表</h2>
+        </div>
+      </div>
+      <div class="card-grid">
+        <a class="post-card featured" href="./posts/hello-world.html">
+          <span class="tag">入门</span>
+          <h3>Hello World</h3>
+          <p>第一篇文章，说明这个博客要怎么写、怎么发、怎么维护，也保留了最初的轻量起点。</p>
+          <div class="post-meta">
+            <time>2026-08-28</time>
+            <span>起步说明</span>
+          </div>
+        </a>
+        <a class="post-card" href="./posts/performance.html">
+          <span class="tag">实践</span>
+          <h3>博客性能优化清单</h3>
+          <p>围绕资源、依赖和脚本数量做控制，让站点在变漂亮之后依然轻。</p>
+          <div class="post-meta">
+            <time>2026-08-28</time>
+            <span>性能优化</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>文章页</span>
+      <span>更新于 2026-09-04</span>
+    </footer>
+  </main>
+</body>
+</html>

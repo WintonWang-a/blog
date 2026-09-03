@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hello World，Winton Blog 的第一篇文章。">
   <title>Hello World | Winton Blog</title>
-  <link rel="stylesheet" href="../assets/style.css?v=20260901b">
+  <link rel="stylesheet" href="../assets/style.css?v=20260904f">
   <script defer src="../assets/site-config.js"></script>
   <script defer src="../assets/blog-api.js"></script>
+  <script defer src="../assets/layout.js"></script>
   <script defer src="../assets/comments.js"></script>
 </head>
 <body>
@@ -16,25 +18,32 @@
 
   <header class="site-header shell">
     <a class="brand" href="../index.html">
-      <span class="brand-mark">✦</span>
-      <span>Winton Blog</span>
+      <span class="brand-mark">W</span>
+      <span class="brand-copy">
+        <strong>Winton Blog</strong>
+        <span>Notes, Projects, Moments</span>
+      </span>
     </a>
     <nav class="nav">
-      <a href="../index.html">首页</a>
-      <a href="../about.html">简历</a>
-      <a href="../posts/hello-world.html">文章</a>
-      <a href="../dynamic.html">动态</a>
+      <a class="nav-link" data-nav-link href="../index.html">首页</a>
+      <a class="nav-link" data-nav-link href="../projects.html">项目</a>
+      <a class="nav-link" data-nav-link href="../photo-wall.html">照片墙</a>
+      <a class="nav-link" data-nav-link href="../talks.html">说说</a>
+      <a class="nav-link" data-nav-link href="../articles.html">文章</a>
+      <a class="nav-link" data-nav-link href="../about.html">关于</a>
     </nav>
     <span class="status-pill">Article</span>
   </header>
 
-  <main class="shell narrow">
+  <main class="shell narrow article-shell">
+    <a class="back-link" href="../articles.html">← 返回文章列表</a>
     <article class="page glass">
       <p class="eyebrow">入门</p>
       <h1>Hello World</h1>
       <p class="meta">2026-08-28</p>
       <p>这是一套最轻的博客起点。没有框架负担，没有数据库，直接改 HTML 就能发文。</p>
-      <p>下一步可以把文章拆成独立页面，再慢慢补标签、归档和搜索。</p>
+      <p>这次重构之后，首页和导航已经更像完整站点了，但文章页依旧保留简单直接的阅读体验。</p>
+      <p>下一步可以继续补文章列表、分类、标签和更多真实内容，让这个博客慢慢长出自己的节奏。</p>
     </article>
     <section class="comments-panel glass" data-comments data-post-slug="hello-world"></section>
   </main>

@@ -3,113 +3,173 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="二次元风格的静态博客主页，集个人简历与音乐播放于一体。">
-  <title>Winton | 博客</title>
-  <link rel="stylesheet" href="./assets/style.css?v=20260901b">
+  <meta name="description" content="Winton 的个人博客首页，参考 RyuChan 的 Banner、背景材质与双栏布局重构。">
+  <title>首页 | Winton Blog</title>
+  <link rel="stylesheet" href="./assets/style.css?v=20260904f">
   <script defer src="./assets/site-config.js"></script>
   <script defer src="./assets/blog-api.js"></script>
   <script defer src="./assets/data-store.js"></script>
-  <script defer src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.10/dist/browser/pixi.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.4.0/dist/cubism4.min.js"></script>
-  <script defer src="./assets/app.js"></script>
-  <script defer src="./assets/live2d.js"></script>
+  <script defer src="./assets/layout.js"></script>
   <script defer src="./assets/feed.js"></script>
 </head>
 <body>
+  <div class="petal-field" aria-hidden="true">
+    <span style="--x: 7%; --delay: -1s; --duration: 18s; --drift: 8vw; --size: 13px;"></span>
+    <span style="--x: 15%; --delay: -8s; --duration: 22s; --drift: 13vw; --size: 10px;"></span>
+    <span style="--x: 23%; --delay: -13s; --duration: 20s; --drift: 5vw; --size: 12px;"></span>
+    <span style="--x: 34%; --delay: -4s; --duration: 24s; --drift: 10vw; --size: 14px;"></span>
+    <span style="--x: 43%; --delay: -11s; --duration: 19s; --drift: 15vw; --size: 11px;"></span>
+    <span style="--x: 51%; --delay: -16s; --duration: 21s; --drift: 6vw; --size: 9px;"></span>
+    <span style="--x: 62%; --delay: -6s; --duration: 23s; --drift: 12vw; --size: 15px;"></span>
+    <span style="--x: 71%; --delay: -14s; --duration: 17s; --drift: 7vw; --size: 10px;"></span>
+    <span style="--x: 81%; --delay: -3s; --duration: 25s; --drift: 16vw; --size: 13px;"></span>
+    <span style="--x: 90%; --delay: -10s; --duration: 20s; --drift: 9vw; --size: 12px;"></span>
+  </div>
   <div class="bg-orb bg-orb-a"></div>
   <div class="bg-orb bg-orb-b"></div>
   <div class="bg-grid"></div>
 
   <header class="site-header shell">
     <a class="brand" href="./index.html">
-      <span class="brand-mark">✦</span>
-      <span>Winton Blog</span>
+      <span class="brand-mark">W</span>
+      <span class="brand-copy">
+        <strong>Winton Blog</strong>
+        <span>Notes, Projects, Moments</span>
+      </span>
     </a>
     <nav class="nav">
-      <a href="./index.html">首页</a>
-      <a href="./about.html">简历</a>
-      <a href="./posts/hello-world.html">文章</a>
-      <a href="./dynamic.html">动态</a>
+      <a class="nav-link" data-nav-link href="./index.html">首页</a>
+      <a class="nav-link" data-nav-link href="./projects.html">项目</a>
+      <a class="nav-link" data-nav-link href="./photo-wall.html">照片墙</a>
+      <a class="nav-link" data-nav-link href="./talks.html">说说</a>
+      <a class="nav-link" data-nav-link href="./articles.html">文章</a>
+      <a class="nav-link" data-nav-link href="./about.html">关于</a>
     </nav>
-    <span class="status-pill">Online</span>
+    <span class="status-pill">Ryu Layout</span>
   </header>
 
-  <main class="shell stack home-stack">
-    <section class="hero glass">
-      <div class="hero-copy">
-        <p class="eyebrow">博客 · 个人主页</p>
-        <h1>Winton Wang </h1>
-        <p class="lead">日常。</p>
-        <div class="cta-row">
-          <a class="btn primary" href="./about.html">查看简历</a>
-          <a class="btn ghost" href="./posts/hello-world.html">浏览文章</a>
+  <main class="shell">
+    <section class="hero-banner">
+      <div class="hero-content">
+        <aside class="hero-panel profile-panel">
+          <img class="hero-avatar" src="./assets/avatar.jpg" alt="Winton Wang 头像">
+          <div class="profile-name">Winton Wang</div>
+          <p class="profile-role">AI Agent / 算法 / 嵌入式</p>
+          <ul class="hero-meta-list">
+            <li><span>现在在做</span><strong>整理博客</strong></li>
+            <li><span>常写内容</span><strong>文章 / 项目 / 说说</strong></li>
+            <li><span>位置</span><strong>无锡</strong></li>
+          </ul>
+        </aside>
+
+        <div class="hero-stack">
+          <section class="hero-copy glass">
+            <p class="eyebrow">Hello, I'm Winton</p>
+            <h1>这里放文章、项目<br>和一些日常记录。</h1>
+            <p class="lead">平时会写点技术笔记，也会整理自己在做的东西。这个博客想做得轻一点，也保留一点自己的气质。</p>
+            <div class="cta-row">
+              <a class="btn primary" href="./articles.html">看文章</a>
+              <a class="btn ghost" href="./about.html">关于我</a>
+            </div>
+          </section>
+
+          <section class="talk-preview glass">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Talks</p>
+                <h2>说说</h2>
+              </div>
+              <a class="text-link" href="./talks.html">更多</a>
+            </div>
+            <div class="dynamic-feed" data-post-feed data-limit="2" data-category="动态"></div>
+          </section>
         </div>
       </div>
 
-      <aside class="profile-card">
-        <div class="avatar-frame">
-          <img class="avatar" src="./assets/avatar.jpg" alt="Winton Wang 头像">
-        </div>
-        <div class="profile-name">Winton Wang</div>
-        <p class="profile-role">ai agent / 计算机爱好者 / 物联网工程</p>
-        <dl class="stats">
-          <div><dt>状态</dt><dd>在线</dd></div>
-
-          <div><dt>部署</dt><dd>GitHub Pages</dd></div>
-        </dl>
-      </aside>
-    </section>
-
-    <section class="music-panel glass">
-      <div>
-        <p class="eyebrow">正在听</p>
-        <h2>Lo-fi Sakura Loop</h2>
-        <p class="lead small">点击播放，页面会生成一段柔和的 Lo-fi 循环音轨。后续也可以替换成真实音频文件。</p>
-      </div>
-      <div class="music-controls">
-        <button class="music-btn" type="button" data-music-toggle>播放 BGM</button>
-        <div class="music-meta">
-          <span class="music-state" data-music-state>已暂停</span>
-          <strong>Lo-fi Sakura Loop</strong>
-        </div>
-        <div class="equalizer" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="posts-section">
-      <div class="section-head">
-        <p class="eyebrow">博客文章</p>
-        <h2>最近更新</h2>
-      </div>
-      <div class="card-grid">
-        <a class="post-card featured glass" href="./posts/hello-world.html">
-          <span class="tag">入门</span>
-          <h3>Hello World</h3>
-          <p>第一篇文章，说明这个博客要怎么写、怎么发、怎么维护。</p>
-          <time>2026-08-28</time>
-        </a>
-        <a class="post-card glass" href="./posts/performance.html">
-          <span class="tag">实践</span>
-          <h3>博客性能优化清单</h3>
-          <p>压缩资源、少依赖、少脚本，让页面打开更快。</p>
-          <time>2026-08-28</time>
-        </a>
+      <div class="banner-wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+          <path class="wave-1" d="M0,96L60,85.3C120,75,240,53,360,53.3C480,53,600,75,720,96C840,117,960,139,1080,133.3C1200,128,1320,96,1380,80L1440,64L1440,181L1380,181C1320,181,1200,181,1080,181C960,181,840,181,720,181C600,181,480,181,360,181C240,181,120,181,60,181L0,181Z"></path>
+          <path class="wave-2" d="M0,128L80,138.7C160,149,320,171,480,160C640,149,800,107,960,96C1120,85,1280,107,1360,117.3L1440,128L1440,181L1360,181C1280,181,1120,181,960,181C800,181,640,181,480,181C320,181,160,181,80,181L0,181Z"></path>
+          <path class="wave-3" d="M0,160L48,149.3C96,139,192,117,288,112C384,107,480,117,576,117.3C672,117,768,107,864,101.3C960,96,1056,96,1152,106.7C1248,117,1344,139,1392,149.3L1440,160L1440,181L1392,181C1344,181,1248,181,1152,181C1056,181,960,181,864,181C768,181,672,181,576,181C480,181,384,181,288,181C192,181,96,181,48,181L0,181Z"></path>
+        </svg>
       </div>
     </section>
 
-    <section class="dynamic-section glass">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">动态博客</p>
-          <h2>最新动态</h2>
-        </div>
-        <a class="text-link" href="./dynamic.html">查看全部</a>
+    <section class="page-grid home-shell">
+      <div class="primary-column">
+        <section class="content-card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Sections</p>
+              <h2>站内入口</h2>
+            </div>
+          </div>
+          <div class="quick-grid">
+            <a class="quick-link" href="./projects.html" aria-label="项目页">
+              <span class="quick-icon">⌘</span>
+              <strong>项目</strong>
+              <p>看看最近在做什么。</p>
+            </a>
+            <a class="quick-link" href="./photo-wall.html" aria-label="照片墙">
+              <span class="quick-icon">▣</span>
+              <strong>照片墙</strong>
+              <p>留一点轻松的日常画面。</p>
+            </a>
+            <a class="quick-link" href="./talks.html" aria-label="说说页">
+              <span class="quick-icon">✎</span>
+              <strong>说说</strong>
+              <p>短一点、随手一点的更新。</p>
+            </a>
+            <a class="quick-link" href="./articles.html" aria-label="文章页">
+              <span class="quick-icon">✦</span>
+              <strong>文章</strong>
+              <p>比较完整的记录和笔记。</p>
+            </a>
+            <a class="quick-link" href="./about.html" aria-label="关于页">
+              <span class="quick-icon">☰</span>
+              <strong>关于</strong>
+              <p>简单介绍一下我自己。</p>
+            </a>
+            <a class="quick-link" href="./dynamic-post.html?slug=blog" aria-label="动态详情">
+              <span class="quick-icon">→</span>
+              <strong>最新一条</strong>
+              <p>直接看看最近更新。</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="content-card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Articles</p>
+              <h2>文章</h2>
+            </div>
+            <a class="text-link" href="./articles.html">查看全部</a>
+          </div>
+          <div class="card-grid">
+            <a class="post-card featured" href="./posts/hello-world.html">
+              <span class="tag">入门</span>
+              <h3>Hello World</h3>
+              <p>第一篇文章，说明这个博客要怎么写、怎么发、怎么维护，也保留了最初的轻量起点。</p>
+              <div class="post-meta">
+                <time>2026-08-28</time>
+                <span>起步说明</span>
+              </div>
+            </a>
+            <a class="post-card" href="./posts/performance.html">
+              <span class="tag">实践</span>
+              <h3>博客性能优化清单</h3>
+              <p>围绕资源、依赖和脚本数量做控制，让站点在变漂亮之后依然轻。</p>
+              <div class="post-meta">
+                <time>2026-08-28</time>
+                <span>性能优化</span>
+              </div>
+            </a>
+          </div>
+        </section>
       </div>
-      <div class="dynamic-feed" data-post-feed data-limit="3"></div>
     </section>
+
   </main>
 </body>
 </html>

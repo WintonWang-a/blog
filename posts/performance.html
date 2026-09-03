@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="博客性能优化清单，Winton Blog 的实践文章。">
   <title>博客性能优化清单 | Winton Blog</title>
-  <link rel="stylesheet" href="../assets/style.css?v=20260901b">
+  <link rel="stylesheet" href="../assets/style.css?v=20260904f">
   <script defer src="../assets/site-config.js"></script>
   <script defer src="../assets/blog-api.js"></script>
+  <script defer src="../assets/layout.js"></script>
   <script defer src="../assets/comments.js"></script>
 </head>
 <body>
@@ -16,25 +18,32 @@
 
   <header class="site-header shell">
     <a class="brand" href="../index.html">
-      <span class="brand-mark">✦</span>
-      <span>Winton Blog</span>
+      <span class="brand-mark">W</span>
+      <span class="brand-copy">
+        <strong>Winton Blog</strong>
+        <span>Notes, Projects, Moments</span>
+      </span>
     </a>
     <nav class="nav">
-      <a href="../index.html">首页</a>
-      <a href="../about.html">简历</a>
-      <a href="../posts/hello-world.html">文章</a>
-      <a href="../dynamic.html">动态</a>
+      <a class="nav-link" data-nav-link href="../index.html">首页</a>
+      <a class="nav-link" data-nav-link href="../projects.html">项目</a>
+      <a class="nav-link" data-nav-link href="../photo-wall.html">照片墙</a>
+      <a class="nav-link" data-nav-link href="../talks.html">说说</a>
+      <a class="nav-link" data-nav-link href="../articles.html">文章</a>
+      <a class="nav-link" data-nav-link href="../about.html">关于</a>
     </nav>
     <span class="status-pill">Article</span>
   </header>
 
-  <main class="shell narrow">
+  <main class="shell narrow article-shell">
+    <a class="back-link" href="../articles.html">← 返回文章列表</a>
     <article class="page glass">
       <p class="eyebrow">实践</p>
       <h1>博客性能优化清单</h1>
       <p class="meta">2026-08-28</p>
       <p>只保留必要样式和少量脚本，页面会更快，部署也更稳。</p>
-      <p>图片尽量压缩，文章页保持轻量，就是最实用的优化。</p>
+      <p>这次首页虽然加入了更完整的 Banner、材质层和双栏布局，但依然尽量把资源控制在简单范围内，没有额外引入大型前端框架。</p>
+      <p>图片尽量压缩，脚本按页加载，结构清楚，通常就是最有效也最稳妥的优化。</p>
     </article>
     <section class="comments-panel glass" data-comments data-post-slug="performance"></section>
   </main>
